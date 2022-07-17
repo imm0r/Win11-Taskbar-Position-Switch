@@ -18,15 +18,15 @@ rotation:={1:0,2:1,3:2,4:3}
 
 	If((display) == "landscape")																			; Current orientation is landscape
 	{
-		sResult := screenRes_Set(sRes[2] "x" sRes[1] "@" sRes[3], display, rotation[4])					; So we rotate to portrait mode now
+		sResult := screenRes_Set(sRes[2] "x" sRes[1] "@" sRes[3], display, rotation[4])				; So we rotate to portrait mode now
 		If(Get_DisplayOrientation(display) == "portrait (gedreht)" && GetCurrentTaskbarPos() == "bottom")	; Check if screen rotation was successfull and if taskbar is at the bottom of the screen
-			NewBinaryRegValue := TaskbarPos.get("top") . CurrRegVal_p2										; NewBinaryRegValue now contains the binary string for the registry for taskbar at the bottom
+			NewBinaryRegValue := TaskbarPos.get("top") . CurrRegVal_p2					; NewBinaryRegValue now contains the binary string for the registry for taskbar at the bottom
 	}
-	else If(Get_DisplayOrientation(display) == "portrait (gedreht)")										; Current orientation is portrait
+	else If(Get_DisplayOrientation(display) == "portrait (gedreht)")						; Current orientation is portrait
 	{
-		sResult := screenRes_Set(sRes[2] "x" sRes[1] "@" sRes[3], display, rotation[1])					; So we rotate to landscape mode now
-		If(Get_DisplayOrientation(display) == "landscape" && GetCurrentTaskbarPos() == "top")				; Check if screen rotation was successfull and if taskbar is at the top of the screen
-			NewBinaryRegValue := TaskbarPos.get("bottom") . CurrRegVal_p2									; NewBinaryRegValue now contains the binary string for the registry for taskbar at the top
+		sResult := screenRes_Set(sRes[2] "x" sRes[1] "@" sRes[3], display, rotation[1])				; So we rotate to landscape mode now
+		If(Get_DisplayOrientation(display) == "landscape" && GetCurrentTaskbarPos() == "top")			; Check if screen rotation was successfull and if taskbar is at the top of the screen
+			NewBinaryRegValue := TaskbarPos.get("bottom") . CurrRegVal_p2					; NewBinaryRegValue now contains the binary string for the registry for taskbar at the top
 	}
 	else
 		sResult := "Could not retrieve the current screen orientation!`nFound: " Get_DisplayOrientation(display)
