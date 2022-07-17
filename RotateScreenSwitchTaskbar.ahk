@@ -28,8 +28,7 @@ Else {
 	msgbox, % "Error occured!`nNot patching your taskbar position!"
 }
 
-If(NewBinaryRegValue)
-{
+If(NewBinaryRegValue) {
 	RegWrite, REG_BINARY, HKCU, Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3, Settings, % NewBinaryRegValue
 	If(!ErrorLevel) {
 		If(A_IsAdmin) {
@@ -45,8 +44,7 @@ If(NewBinaryRegValue)
 	}
 }
 
-SilentRun(cmd)
-{
+SilentRun(cmd) {
     exec := ComObjCreate("WScript.Shell").Exec(ComSpec " /c " cmd)
     return, % exec.StdOut.ReadAll()
 }
